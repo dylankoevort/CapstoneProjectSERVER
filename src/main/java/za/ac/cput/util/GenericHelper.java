@@ -9,10 +9,9 @@ package za.ac.cput.util;
  *
  */
 
-import java.util.UUID;
-
 public class GenericHelper {
     public static String generateRandom() {
-        return UUID.randomUUID().toString();
+        double randNum = Math.random();
+        return Long.valueOf(Math.round((randNum * Math.pow(10, 6)))).toString();
     }
 }
