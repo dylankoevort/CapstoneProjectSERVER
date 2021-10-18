@@ -8,7 +8,17 @@ import java.util.Date;
  * Author: Tisetso Kotoana
  * Date:01 June 2021
  */
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="Semester")
 public class Semester {
+
+   @Id
    private String semesterID;
    private Date semesterStart;
    private Date semesterEnd;
