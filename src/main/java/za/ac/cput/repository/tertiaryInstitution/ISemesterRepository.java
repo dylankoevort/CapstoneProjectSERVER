@@ -11,6 +11,7 @@ import java.util.Set;
  * Author: Tisetso Kotoana
  * Date: 23 July 2021
  */
+@Deprecated
 public interface ISemesterRepository extends IRepository<Semester, String> {
     Set<Semester> getAll();
 }

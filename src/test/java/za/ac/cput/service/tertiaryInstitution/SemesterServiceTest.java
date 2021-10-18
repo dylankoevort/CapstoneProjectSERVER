@@ -8,23 +8,31 @@ package za.ac.cput.service.tertiaryInstitution;
  *
  */
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.entity.tertiaryInstitution.Semester;
+import za.ac.cput.entity.tertiaryInstitution.Semester;
+import za.ac.cput.factory.tertiaryInstitution.EnrollFactory;
 import za.ac.cput.factory.tertiaryInstitution.SemesterFactory;
+import za.ac.cput.service.tertiaryInstitution.impl.EnrollService;
 import za.ac.cput.service.tertiaryInstitution.impl.SemesterService;
 
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest
 class SemesterServiceTest {
+    @Autowired
+    static Date d1 = new Date(2021, 02, 10);
+    static Date d2 = new Date(2021, 06, 10);
 
-    private static ISemesterService service = SemesterService.getService();
-    static Date d1 = new Date(2021,02,10);
-    static Date d2 = new Date(2021,02,10);
-
-    //I need to find a way to pass date is depracated
-    private static Semester semester = SemesterFactory.build("T39090",d1,d2);
+    private SemesterService service;
+    private static Semester semester = SemesterFactory.build("202178456", d1, d2);
 
     @Test
     void a_create() {
@@ -33,29 +41,31 @@ class SemesterServiceTest {
         System.out.println("Created: " + created);
     }
 
-   @Test
+    @Test
     void b_read() {
         Semester read = service.read(semester.getSemesterID());
         assertNotNull(read);
-       System.out.println("Read: " + read);
-   }
+        System.out.println("Read: " + read);
+    }
 
+    @Test
     void c_update() {
-        Semester updated = new Semester.SemesterBuilder().copy(semester).setSemesterID("20214545").build();
+         Date d1 = new Date(2021, 06, 10);
+        Semester updated = new Semester.SemesterBuilder().copy(semester).setSemesterStart(d1).build();
         assertNotNull(service.update(updated));
-       System.out.println("Updated: " + updated);
+        System.out.println("Updated: " + updated);
     }
 
     @Test
-   void e_delete() {
-        boolean deleted = service.delete(semester.getSemesterID());
-       assertTrue(deleted);
-       System.out.println("Delete: " + deleted);
+    void e_delete() {
+        boolean accept = service.delete(semester.getSemesterID());
+        assertTrue(accept);
+        System.out.println("Delete: " + accept);
     }
 
     @Test
-   void d_getAll() {
-        System.out.println("Details: \n" + service.getAll());
-   }
+    void d_getAll() {
+        System.out.println("Display All: \n" + service.getAll());
+    }
 
 }

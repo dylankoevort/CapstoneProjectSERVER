@@ -11,6 +11,7 @@ import java.util.Set;
  * Author: Tisetso Kotoana
  * Date: 23 July 2021
  */
+@Deprecated
 public interface IEnrollRepository extends IRepository<Enroll, String> {
     public Set<Enroll> getAll();
 }

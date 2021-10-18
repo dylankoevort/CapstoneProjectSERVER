@@ -1,6 +1,5 @@
 package za.ac.cput.entity.tertiaryInstitution;
 
-import java.util.Date;
 
 /**
  * Enroll.java
@@ -9,7 +8,19 @@ import java.util.Date;
  * Date:01 June 2021
  */
 
+
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="Enroll")
+
 public class Enroll {
+
+    @Id
     private String studentID;
     private String courseCode;
     private Date date;
