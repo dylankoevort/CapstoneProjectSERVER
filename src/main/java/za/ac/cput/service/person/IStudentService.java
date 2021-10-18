@@ -16,5 +16,4 @@ import java.util.Set;
 
 public interface IStudentService extends IService <Student, String> {
     Set<Student> getAll();
-    Student getStudentGivenLastName(String lastName);
 }

@@ -56,16 +56,4 @@ public class StudentService implements IStudentService {
     public Set<Student> getAll() {
         return new HashSet<>(this.repository.findAll());
     }
-
-    public Student getStudentGivenLastName(String lastName) {
-        Student s = null;
-        Set<Student> students = getAll();
-        for (Student student : students) {
-            if (student.getLastName().equals(lastName)) {
-                s = student;
-                break;
-            }
-        }
-        return s;
-    }
 }
