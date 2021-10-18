@@ -17,6 +17,7 @@ import za.ac.cput.entity.person.Student;
 import za.ac.cput.repository.person.impl.StudentRepository;
 import za.ac.cput.service.person.IStudentService;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -53,18 +54,6 @@ public class StudentService implements IStudentService {
 
     @Override
     public Set<Student> getAll() {
-        return this.repository.findAll().stream().collect(Collectors.toSet());
-    }
-
-    public Student getStudentGivenLastName(String lastName) {
-        Student s = null;
-        Set<Student> students = getAll();
-        for (Student student : students) {
-            if (student.getLastName().equals(lastName)) {
-                s = student;
-                break;
-            }
-        }
-        return s;
+        return new HashSet<>(this.repository.findAll());
     }
 }
