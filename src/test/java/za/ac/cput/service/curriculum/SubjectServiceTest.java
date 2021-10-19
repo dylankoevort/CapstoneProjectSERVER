@@ -4,12 +4,14 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.entity.curriculum.Subject;
 import za.ac.cput.factory.curriculum.SubjectFactory;
 import za.ac.cput.service.curriculum.impl.SubjectService;
 
-import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.jupiter.api.Assertions.*;
 /**
  *
  * Created SubjectServiceTest
@@ -17,9 +19,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * 29 July2021
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@SpringBootTest
 class SubjectServiceTest {
 
-    private static ISubjectService Subjectservice = SubjectService.getService();
+    @Autowired
+    private SubjectService Subjectservice;
     private static Subject subject= SubjectFactory.build("Applications Development 3",8732635,"363",321);
     @Test
     @Order(1)
@@ -30,9 +34,7 @@ class SubjectServiceTest {
         System.out.println("Created subject:"+ createdSubject);
 
     }
-    // this is the fail test for the Sub_create:
-    @Test
-    void Sub_createFail(){};
+
 
     @Test
     @Order(2)
@@ -44,9 +46,7 @@ class SubjectServiceTest {
 
 
     }
-    // this is the fail test for the Sub_read:
-    @Test
-    void Sub_readFail(){};
+
 
     @Test
     @Order(3)
@@ -56,8 +56,6 @@ class SubjectServiceTest {
         System.out.println("Updated new semesterID of :"+ updated);
     }
     // this is the fail test for the Sub_update:
-    @Test
-    void Sub_updateFail(){};
 
     @Test
     @Order(4)
@@ -67,9 +65,6 @@ class SubjectServiceTest {
         System.out.println("Deleted the following:"  + subje);
 
     }
-    // this is the fail test for the Sub_delete:
-    @Test
-    void Sub_deleteFail(){};
 
     @Test
     @Order(5)
@@ -77,7 +72,5 @@ class SubjectServiceTest {
         System.out.println("displaying all information: " + Subjectservice.getAll());
     }
 
-    // this is the fail test for the Sub_getAll:
-    @Test
-    void Sub_getAllFail(){};
+
 }

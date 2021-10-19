@@ -9,10 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import za.ac.cput.entity.curriculum.Subject;
+
 import za.ac.cput.factory.curriculum.SubjectFactory;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 /**
  *
  * Created test for SubjectController class.
@@ -34,7 +33,7 @@ class SubjectControllerTest {
     @Test
     @Order(1)
     void create_Sub() {
-        String url = BASE_URL + "/creates";
+        String url = BASE_URL + "/create";
         ResponseEntity<Subject> postResponse = restTemplate.postForEntity(url, sub, Subject.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
@@ -46,7 +45,7 @@ class SubjectControllerTest {
     @Test
     @Order(2)
     void read_Sub() {
-        String url = BASE_URL + "/readsub" + sub.getSubjectCode();
+        String url = BASE_URL + "/read/" + sub.getSubjectCode();
         System.out.println("URL for read: " + url);
         ResponseEntity<Subject> response = restTemplate.getForEntity(url, Subject.class);
         assertEquals(response.getBody().getSubjectCode(), response.getBody().getSubjectCode());
@@ -56,8 +55,8 @@ class SubjectControllerTest {
     @Test
     @Order(3)
     void update_Sub() {
-       Subject updated = new Subject.SubjectBuilder().copy(sub).setsubjectName("Information Systems 3").build();
-        String url = BASE_URL + "/updatesub";
+        Subject updated = new Subject.SubjectBuilder().copy(sub).setsubjectName("Information Systems 3").build();
+        String url = BASE_URL + "/update";
         System.out.println("URL for update: " + url);
         System.out.println("Post data of subject: " + updated);
         ResponseEntity<Subject> response = restTemplate.postForEntity(url, updated, Subject.class);
@@ -67,7 +66,7 @@ class SubjectControllerTest {
     @Test
     @Order(4)
     void delete_Sub() {
-        String url = BASE_URL + "/deletesub" + sub.getSubjectCode();
+        String url = BASE_URL + "/delete/" + sub.getSubjectCode();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }
@@ -75,7 +74,7 @@ class SubjectControllerTest {
     @Test
     @Order(5)
     void getAll_Sub() {
-        String url = BASE_URL + "/getallsub";
+        String url = BASE_URL + "/getall";
         HttpHeaders head = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, head);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);

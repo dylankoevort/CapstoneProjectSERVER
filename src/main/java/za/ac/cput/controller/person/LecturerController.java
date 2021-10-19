@@ -20,28 +20,28 @@ public class LecturerController {
     @Autowired
     private LecturerService lecturerService;
 
-    @PostMapping("/createl")
+    @PostMapping("/create")
     public  Lecturer create(@RequestBody Lecturer lec){
-      Lecturer r = LecturerFactory.build(lec.getFirstName(),lec.getLastName(),lec.getAge(), lec.getEmailAddress(), lec.getContactNo());
-        return  lecturerService.create(r);
+        Lecturer l = LecturerFactory.build(lec.getFirstName(),lec.getLastName(),lec.getAge(), lec.getEmailAddress(), lec.getContactNo());
+        return  lecturerService.create(l);
     }
-    @GetMapping("/readlect")
+    @GetMapping("/read/{id}")
     public Lecturer read(@PathVariable String id) {
         return lecturerService.read(id);
     }
 
-    @PostMapping("/updatelect")
+    @PostMapping("/update")
     public Lecturer update(@RequestBody Lecturer lecturer) {
         return lecturerService.update(lecturer);
     }
 
-    @PostMapping("/deletelect")
+    @PostMapping("/delete/{id}")
     public boolean delete(@PathVariable String id) {
         return lecturerService.delete(id);
     }
 
 
-    @GetMapping("/getalllect")
+    @GetMapping("/getall")
     public Set<Lecturer> getAll() {
         return lecturerService.getAll();
     }
