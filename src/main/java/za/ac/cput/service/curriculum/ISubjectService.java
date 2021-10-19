@@ -13,4 +13,5 @@ import java.util.Set;
  */
 public interface ISubjectService extends IService<Subject, String> {
     Set<Subject> getAll();
+    Subject getSubjectGivenSubjectName(String subjectName);
 }

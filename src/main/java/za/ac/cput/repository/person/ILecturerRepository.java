@@ -11,6 +11,7 @@ import java.util.Set;
  * Author: Shane Knoll (218279124)
  * 22 July2021
  */
+@Deprecated
 public interface ILecturerRepository extends IRepository<Lecturer,String> {
     public Set<Lecturer> getAll();
 }

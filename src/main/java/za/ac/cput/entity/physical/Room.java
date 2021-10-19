@@ -1,13 +1,19 @@
 package za.ac.cput.entity.physical;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * author: Llewelyn Klaase
  * student no: 216267072
  */
 
+@Entity
 public class Room {
 
-    private String roomCode, roomType;
+    @Id
+    private String roomCode;
+    private String roomType;
     private int roomCapacity, roomFloor, buildingID;
 
     public Room(RoomBuilder room) {
@@ -16,6 +22,9 @@ public class Room {
         this.roomCapacity = room.roomCapacity;
         this.roomFloor = room.roomFloor;
         this.buildingID = room.buildingID;
+    }
+
+    protected Room() {
     }
 
     public String getRoomCode() {

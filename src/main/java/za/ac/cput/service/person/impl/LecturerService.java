@@ -1,11 +1,16 @@
 package za.ac.cput.service.person.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.entity.person.Lecturer;
+
+
 import za.ac.cput.repository.person.impl.LecturerRepository;
+
 import za.ac.cput.service.person.ILecturerService;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -16,48 +21,51 @@ import java.util.Set;
 @Service
 public class LecturerService implements ILecturerService {
 
-    private static LecturerService Lecturerservice= null;
+    @Autowired
     private LecturerRepository repository;
-
-    public LecturerService(){
-        this.repository=LecturerRepository.getRepository();
-
-
-    }
-
-    public static LecturerService getService(){
-        if(Lecturerservice==null){
-            Lecturerservice= new LecturerService();
-
-        }
-        return Lecturerservice;
-
-    }
 
 
     @Override
     public Lecturer create(Lecturer lecturer) {
-        return this.repository.create(lecturer);
+        return this.repository.save(lecturer);
     }
 
     @Override
-    public Lecturer read(String s) {
-        return this.repository.read(s);
+    public Lecturer read(String s) {return this.repository.findById(s).orElse(null);
     }
 
     @Override
     public Lecturer update(Lecturer lecturer) {
-        return this.repository.update(lecturer);
+        if (this.repository.existsById(lecturer.getLecturerID()))
+            return this.repository.save(lecturer);
+        return null;
     }
 
     @Override
-    public boolean delete(String s) {
-        return this.repository.delete(s);
+    public boolean delete(String lecturerId) {
+        this.repository.deleteById(lecturerId);
+        if (this.repository.existsById(lecturerId))
+            return false;
+        else
+            return true;
     }
 
 
     @Override
     public Set<Lecturer> getAll() {
-        return this.repository.getAll();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
+
+    public Lecturer getLecturerGivenFirstName(String firstName) {
+        Lecturer l = null;
+        Set<Lecturer> lecturers = getAll();
+        for (Lecturer lect : lecturers) {
+            if (lect.getFirstName().equals(firstName)) {
+                l = lect;
+                break;
+            }
+        }
+        return l;
+    }
+
 }

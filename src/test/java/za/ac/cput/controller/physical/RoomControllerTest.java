@@ -22,8 +22,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class RoomControllerTest {
 
-    private static Room room = RoomFactory.build("Lecture Hall","LH1",100,1,666);
     @Autowired
+    private static Room room = RoomFactory.build("Lecture Hall","LH1",100,1,666);
+
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:8080/room";
 

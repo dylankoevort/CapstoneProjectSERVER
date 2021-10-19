@@ -1,11 +1,16 @@
 package za.ac.cput.service.curriculum.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.entity.curriculum.Subject;
+
+
 import za.ac.cput.repository.curriculum.impl.SubjectRepository;
+
 import za.ac.cput.service.curriculum.ISubjectService;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -15,51 +20,51 @@ import java.util.Set;
  */
 @Service
 public class SubjectService implements ISubjectService {
-    private static SubjectService Subjectservice= null;
+    @Autowired
     private SubjectRepository repository;
-
-    public SubjectService(){
-        this.repository=SubjectRepository.getRepository();
-
-
-    }
-
-    public static SubjectService getService(){
-        if(Subjectservice==null){
-            Subjectservice= new SubjectService();
-
-        }
-        return Subjectservice;
-
-    }
-
 
     @Override
     public Subject create(Subject subject) {
-        return this.repository.create(subject);
+        return this.repository.save(subject);
     }
 
     @Override
     public Subject read(String s) {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElse(null);
     }
 
     @Override
     public Subject update(Subject subject) {
-        return this.repository.update(subject);
+        if (this.repository.existsById(subject.getSubjectCode()))
+            return this.repository.save(subject);
+        return null;
     }
 
     @Override
-    public boolean delete(String s) {
-        return this.repository.delete(s);
+    public boolean delete(String subjectCode) {
+        this.repository.deleteById(subjectCode);
+        if (this.repository.existsById(subjectCode))
+            return false;
+        else
+            return true;
     }
 
 
     @Override
     public Set<Subject> getAll() {
-        return this.repository.getAll();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
-
+    public Subject getSubjectGivenSubjectName(String subjectName) {
+        Subject s = null;
+        Set<Subject> subjects = getAll();
+        for (Subject sub : subjects) {
+            if (sub.getSubjectName().equals(subjectName)) {
+                s = sub;
+                break;
+            }
+        }
+        return s;
+    }
 }
 
 

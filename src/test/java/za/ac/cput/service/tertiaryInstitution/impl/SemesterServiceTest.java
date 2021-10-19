@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SemesterServiceTest {
 
-    private static ISemesterService service = SemesterService.getService();
+    private static SemesterService service;
     static Date d1 = new Date(2021,02,10);
     static Date d2 = new Date(2021,02,10);
 
