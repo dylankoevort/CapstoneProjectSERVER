@@ -9,6 +9,7 @@ package za.ac.cput.service.tertiaryInstitution.impl;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.entity.tertiaryInstitution.Enroll;
 import za.ac.cput.repository.tertiaryInstitution.impl.EnrollRepository;
 import za.ac.cput.service.tertiaryInstitution.IEnrollService;
@@ -16,6 +17,7 @@ import za.ac.cput.service.tertiaryInstitution.IEnrollService;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class EnrollService implements IEnrollService {
     private static EnrollService service = null;
 

@@ -5,6 +5,7 @@ import za.ac.cput.repository.IRepository;
 
 import java.util.Set;
 
+@Deprecated
 public interface IBuildingRepository extends IRepository<Building, String> {
     public Set<Building> getAll();
 }

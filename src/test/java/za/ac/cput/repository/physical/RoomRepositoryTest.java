@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RoomRepositoryTest {
 
     @Autowired
-    private static RoomRepository repository = RoomRepository.getRepository();
+    private static RoomRepository repository;
     private static Room room = RoomFactory.build( "A", "123", 100, 2, 1);
 
     @Test

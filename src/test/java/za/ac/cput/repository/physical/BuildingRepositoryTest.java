@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BuildingRepositoryTest {
 
     @Autowired
-    private static BuildingRepository repository = BuildingRepository.getRepository();
+    private static BuildingRepository repository;
     private static Building building = BuildingFactory.build("666", 41, "Engineering", "1 Plein street");
 
     @Test
