@@ -1,19 +1,25 @@
 package za.ac.cput.entity.person;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Lecturer.java
  * Created Entity for the Lecturer using builder pattern.
  * Author: Shane Knoll (218279124)
  * Date:01 June 2021
  */
+@Entity
 public class Lecturer {
     //this is my instance variables/attributes for th entity class Lecturer:
+    @Id
     private String lecturerID;
     private String firstName,lastName;
     private int age;
     private String emailAddress;
     private String contactNo;
 
-    private Lecturer(){}
+    protected Lecturer(){}
 
     private Lecturer(LecturerBuilder b){
         this.lecturerID=b.lecturerID;
@@ -105,7 +111,7 @@ public class Lecturer {
             contactNo=contactno;
             return this;
         }
-        public LecturerBuilder copy (Lecturer l){
+        public Lecturer.LecturerBuilder copy (Lecturer l){
             this.lecturerID= l.lecturerID;
             this.firstName=l.firstName;
             this.lastName=l.lastName;

@@ -1,20 +1,26 @@
 package za.ac.cput.entity.curriculum;
+
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Subject.java
  * Created Entity for the Subject using builder pattern.
  * Author: Shane Knoll (218279124)
  * Date:01 June 2021
  */
-
+@Entity
 public class Subject {
     //this is my instance variables/attributes for th entity class Subject:
+    @Id
     private String subjectCode;
     private String subjectName;
     private int lecturerID;
     private String courseCode;
     private int semesterID;
 
-    private Subject(){}
+    protected Subject(){}
 
     //toString for the Subject class
     @Override
@@ -96,7 +102,7 @@ public class Subject {
             return this;
         }
 
-        public SubjectBuilder copy (Subject s){
+        public Subject.SubjectBuilder copy (Subject s){
             this.subjectCode= s.subjectCode;
             this.subjectName=s.subjectName;
             this.lecturerID=s.lecturerID;

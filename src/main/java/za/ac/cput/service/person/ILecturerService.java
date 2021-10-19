@@ -14,4 +14,5 @@ import java.util.Set;
 
 public interface ILecturerService extends IService<Lecturer, String> {
     Set<Lecturer> getAll();
+    Lecturer getLecturerGivenFirstName(String firstName);
 }

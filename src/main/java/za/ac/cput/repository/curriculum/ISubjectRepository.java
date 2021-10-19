@@ -11,6 +11,7 @@ import java.util.Set;
  * Author: Shane Knoll (218279124)
  * 22 July2021
  */
+@Deprecated
 public interface ISubjectRepository extends IRepository<Subject,String> {
     public Set<Subject> getAll();
 }
