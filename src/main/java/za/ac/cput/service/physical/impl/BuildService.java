@@ -26,22 +26,27 @@ public class BuildService implements IBuildingService {
         return Buildservice;
     }
 
+    @Override
     public Building create(Building building) {
         return this.repository.create(building);
     }
 
+    @Override
     public Building read(String s) {
         return this.repository.read(s);
     }
 
+    @Override
     public Building update(Building building) {
         return this.repository.update(building);
     }
 
+    @Override
     public boolean delete(String s) {
         return this.repository.delete(s);
     }
 
+    @Override
     public Set<Building> getAll() {
         return this.repository.getAll();
     }

@@ -1,5 +1,6 @@
 package za.ac.cput.repository.physical.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import za.ac.cput.entity.physical.Room;
 import za.ac.cput.repository.physical.IRoomRepository;
 
@@ -8,6 +9,7 @@ import java.util.Set;
 
 public class RoomRepository implements IRoomRepository {
 
+    @Autowired
     private static RoomRepository Roomrepository = null;
     private Set<Room> RoomDB = null;
 
@@ -22,6 +24,7 @@ public class RoomRepository implements IRoomRepository {
         return Roomrepository;
     }
 
+    @Override
     public Room create(Room room){
         boolean success = RoomDB.add(room);
         if(!success)
@@ -29,6 +32,7 @@ public class RoomRepository implements IRoomRepository {
         return room;
     }
 
+    @Override
     public Room read(String RoomCode){
 
         for(Room r: RoomDB) {
@@ -39,6 +43,7 @@ public class RoomRepository implements IRoomRepository {
         return null;
     }
 
+    @Override
     public Room update(Room r){
         Room room = read(r.getRoomCode());
         if(room!=null){
@@ -50,6 +55,7 @@ public class RoomRepository implements IRoomRepository {
         return null;
     }
 
+    @Override
     public boolean delete(String RoomCode){
         Room delete = read(RoomCode);
         if(delete==null)
@@ -59,6 +65,7 @@ public class RoomRepository implements IRoomRepository {
 
     }
 
+    @Override
     public Set<Room> getAll() { return RoomDB;
     }
 
