@@ -1,7 +1,5 @@
-package za.ac.cput.repository.curriculum;/*
 package za.ac.cput.repository.curriculum;
 
-*/
 /**
  *
  * ExaminationRepositoryTest.java
@@ -34,8 +32,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExaminationRepositoryTest {
     private static ExaminationRepository repository = ExaminationRepository.getRepository();
     //private static Date date = new Date(121, Calendar.NOVEMBER, 15);
-    private static LocalDate date = LocalDate.of(2021, 11, 15);
-    private static Examination examination = ExaminationFactory.build(10077, "Project Management", date);
+    private static Examination examination = ExaminationFactory.build(10077, "Project Management", "2021/10/28");
 
     @Test
     void a_create() {
