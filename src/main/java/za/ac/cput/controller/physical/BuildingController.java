@@ -1,17 +1,17 @@
 package za.ac.cput.controller.physical;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import za.ac.cput.entity.physical.Building;
 import za.ac.cput.factory.physical.BuildingFactory;
 import za.ac.cput.service.physical.impl.BuildService;
 
 import java.util.Set;
 
+@RestController
+@RequestMapping("/building")
 public class BuildingController {
-
+    @Autowired
     private BuildService buildingService;
 
     @PostMapping("/createl")
