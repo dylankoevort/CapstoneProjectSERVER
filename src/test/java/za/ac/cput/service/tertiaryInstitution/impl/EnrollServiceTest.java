@@ -11,14 +11,13 @@ package za.ac.cput.service.tertiaryInstitution.impl;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.entity.tertiaryInstitution.Enroll;
 import za.ac.cput.factory.tertiaryInstitution.EnrollFactory;
-import za.ac.cput.service.tertiaryInstitution.IEnrollService;
 
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class EnrollServiceTest {
-    private static IEnrollService service = EnrollService.getService();
+    private static EnrollService service;
     static Date d1 = new Date(2021,02,10);
 
     //I need to find a way to pass date is depracated

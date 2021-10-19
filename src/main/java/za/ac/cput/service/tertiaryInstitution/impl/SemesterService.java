@@ -21,6 +21,7 @@ import za.ac.cput.service.tertiaryInstitution.ISemesterService;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class SemesterService implements ISemesterService {
     private static SemesterService service = null;
 
