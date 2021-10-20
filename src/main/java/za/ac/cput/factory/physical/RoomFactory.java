@@ -10,7 +10,7 @@ public class RoomFactory {
 
     public static Room build( String roomCode, String roomType, int roomCapacity, int roomFloor, int buildingID) {
 
-        if(roomType.isEmpty() || roomCode.isEmpty() || roomCapacity <= 0 || roomFloor <= 0 || buildingID <= 0)
+        if(roomCode.isEmpty() || roomType.isEmpty() ||  roomCapacity <= 0 || roomFloor <= 0 || buildingID <= 0)
             return null;
 
         return new Room.RoomBuilder().setRoomCode(roomCode).setRoomType(roomType).setRoomCapacity(roomCapacity).setRoomFloor(roomFloor).setBuildingID(buildingID).build();
