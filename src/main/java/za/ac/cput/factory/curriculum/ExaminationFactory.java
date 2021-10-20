@@ -18,7 +18,7 @@ public class ExaminationFactory {
 
     public static Examination build(int subjectCode, String examDesc, String examDate) {
 
-        if(subjectCode <= 0 || examDesc.isEmpty() || examDate.isEmpty()) {
+        if (subjectCode <= 0 || examDesc.isEmpty() || examDate.isEmpty()) {
             return null;
         }
 
