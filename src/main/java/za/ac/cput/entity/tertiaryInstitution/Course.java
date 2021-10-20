@@ -13,12 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Course")
 public class Course {
 
     @Id
-    private String departmentId;
     private String courseCode;
+    private String departmentId;
     private String title;
     private int credit;
     private int duration;

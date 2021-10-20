@@ -3,6 +3,7 @@ package za.ac.cput.service.tertiaryInstitution.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.entity.tertiaryInstitution.Course;
+import za.ac.cput.entity.tertiaryInstitution.Department;
 import za.ac.cput.repository.tertiaryInstitution.impl.CourseRepository;
 import za.ac.cput.service.tertiaryInstitution.ICourseService;
 
@@ -19,7 +20,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class CourseService implements ICourseService {
-    private static CourseService service = null;
 
     @Autowired
     private CourseRepository repository;
@@ -51,7 +51,7 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public Set<Course> getAll(){
+    public Set<Course> getAll() {
         return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
@@ -63,7 +63,6 @@ public class CourseService implements ICourseService {
                 x = course;
                 break;
             }
-        }
-        return x;
+        } return x;
     }
 }
