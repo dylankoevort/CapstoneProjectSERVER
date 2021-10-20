@@ -27,7 +27,7 @@ class SemesterControllerTest {
     static Date d1 = new Date(2021,02,25);
     static Date d2 = new Date(2021,06,25);
 
-    private static Semester semester = SemesterFactory.build("JFMAMJ2021",d1,d2);
+    private static Semester semester = SemesterFactory.build("JFMAMJ2021","14/03/2021","06/07/2021");
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -59,7 +59,7 @@ class SemesterControllerTest {
 
     @Test
     void c_update(){
-        Semester update = new Semester.SemesterBuilder().copy(semester).setSemesterID("JASONS2021").setSemesterStart(d1).setSemesterEnd(d2).build();
+        Semester update = new Semester.SemesterBuilder().copy(semester).setSemesterID("JASONS2021").setSemesterStart("11/06/2021").setSemesterEnd("06/06/2021").build();
         String url = BASE_URL+"/update";
         System.out.println("URL: "+url);
         System.out.println("Data Updated:"+update);

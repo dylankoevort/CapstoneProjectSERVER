@@ -9,7 +9,6 @@ package za.ac.cput.entity.tertiaryInstitution;
  */
 
 
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -23,8 +22,8 @@ public class Enroll {
     @Id
     private String studentID;
     private String courseCode;
-    private Date date;
-    private boolean paymentReceived;
+    private String date;
+    private String paymentReceived;
 
     private Enroll(EnrollBuilder enroll) {
         this.studentID = enroll.studentID;
@@ -42,11 +41,11 @@ public class Enroll {
         return courseCode;
     }
 
-    public Date getDate(){
+    public String getDate(){
         return date;
     }
 
-    public boolean getPaymentReceived(){
+    public String getPaymentReceived(){
         return paymentReceived;
     }
     @Override
@@ -62,8 +61,8 @@ public class Enroll {
     public static class EnrollBuilder{
         private String studentID;
         private String courseCode;
-        private Date date;
-        private boolean paymentReceived;
+        private String date;
+        private String paymentReceived;
 
         public EnrollBuilder setStudentID(String studentID) {
             this.studentID = studentID;
@@ -75,12 +74,12 @@ public class Enroll {
             return this;
         }
 
-        public EnrollBuilder setDate(Date date) {
+        public EnrollBuilder setDate(String date) {
             this.date = date;
             return this;
         }
 
-        public EnrollBuilder setPaymentReceived(boolean paymentReceived) {
+        public EnrollBuilder setPaymentReceived(String paymentReceived) {
             this.paymentReceived = paymentReceived;
             return this;
         }

@@ -24,7 +24,7 @@ class SemesterServiceTest {
     static Date d2 = new Date(2021,02,10);
 
     //I need to find a way to pass date is depracated
-    private static Semester semester = SemesterFactory.build("T39090",d1,d2);
+    private static Semester semester = SemesterFactory.build("T39090","14/03/2021","23/06/2021");
 
     @Test
     void a_create() {
