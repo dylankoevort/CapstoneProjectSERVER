@@ -1,12 +1,11 @@
-package za.ac.cput.entity.physical;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 /**
  * author: Llewelyn Klaase
  * student no: 216267072
  */
+package za.ac.cput.entity.physical;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Room {
@@ -55,13 +54,13 @@ public class Room {
         private String roomCode, roomType;
         private int roomCapacity, roomFloor, buildingID;
 
-        public RoomBuilder setRoomType(String roomType) {
-            this.roomType = roomType;
+        public RoomBuilder setRoomCode(String roomCode) {
+            this.roomCode = roomCode;
             return this;
         }
 
-        public RoomBuilder setRoomCode(String roomCode) {
-            this.roomCode = roomCode;
+        public RoomBuilder setRoomType(String roomType) {
+            this.roomType = roomType;
             return this;
         }
 
@@ -83,8 +82,8 @@ public class Room {
         public Room build() { return new Room(this); }
 
         public RoomBuilder copy (Room room){
-            this.roomType = room.roomType;
             this.roomCode = room.roomCode;
+            this.roomType = room.roomType;
             this.roomCapacity = room.roomCapacity;
             this.roomFloor = room.roomFloor;
             this.buildingID = room.buildingID;

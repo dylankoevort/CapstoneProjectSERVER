@@ -1,3 +1,7 @@
+/**
+ * author: Llewelyn Klaase
+ * student no: 216267072
+ */
 package za.ac.cput.controller.physical;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,28 +18,28 @@ public class BuildingController {
     @Autowired
     private BuildService buildingService;
 
-    @PostMapping("/createl")
+    @PostMapping("/create")
     public Building create(@RequestBody Building building){
-        Building b = BuildingFactory.build(building.getBuildingID(), building.getRoomCount(), building.getBuildingAddress(), building.getBuildingName());
+        Building b = BuildingFactory.build(building.getBuildingID(), building.getRoomCount(), building.getBuildingName(), building.getBuildingAddress());
         return buildingService.create(b);
     }
-    @GetMapping("/readlect")
+    @GetMapping("/read/{id}")
     public Building read(@PathVariable String id) {
         return buildingService.read(id);
     }
 
-    @PostMapping("/updatelect")
+    @PostMapping("/update")
     public Building update(@RequestBody Building building) {
         return buildingService.update(building);
     }
 
-    @PostMapping("/deletelect")
+    @PostMapping("/delete/{id}")
     public boolean delete(@PathVariable String id) {
         return buildingService.delete(id);
     }
 
 
-    @GetMapping("/getalllect")
+    @GetMapping("/getall")
     public Set<Building> getAll() {
         return buildingService.getAll();
     }

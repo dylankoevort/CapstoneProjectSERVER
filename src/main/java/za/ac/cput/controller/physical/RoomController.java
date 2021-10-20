@@ -1,3 +1,7 @@
+/**
+ * author: Llewelyn Klaase
+ * student no: 216267072
+ */
 package za.ac.cput.controller.physical;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -5,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.entity.physical.Room;
 import za.ac.cput.factory.physical.RoomFactory;
 import za.ac.cput.service.physical.impl.RoomService;
-
 import java.util.Set;
 
 @RestController
@@ -14,28 +17,27 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
-    @PostMapping("/createl")
+    @PostMapping("/create")
     public Room create(@RequestBody Room room){
-        Room r = RoomFactory.build(room.getRoomCode(),room.getRoomType(),room.getRoomCapacity(), room.getBuildingID(), room.getRoomFloor());
+        Room r = RoomFactory.build(room.getRoomCode(),room.getRoomType(),room.getRoomCapacity(), room.getRoomFloor(), room.getBuildingID());
         return  roomService.create(r);
     }
-    @GetMapping("/readlect")
+    @GetMapping("/read/{id}")
     public Room read(@PathVariable String id) {
         return roomService.read(id);
     }
 
-    @PostMapping("/updatelect")
+    @PostMapping("/update")
     public Room update(@RequestBody Room room) {
         return roomService.update(room);
     }
 
-    @PostMapping("/deletelect")
+    @PostMapping("/delete/{id}")
     public boolean delete(@PathVariable String id) {
         return roomService.delete(id);
     }
 
-
-    @GetMapping("/getalllect")
+    @GetMapping("/getall")
     public Set<Room> getAll() {
         return roomService.getAll();
     }
