@@ -28,7 +28,7 @@ public class ExaminationService implements IExaminationService {
     public Examination create(Examination examination) { return this.repository.save(examination); }
 
     @Override
-    public Examination read(String scheduledClassId) { return this.repository.findById(scheduledClassId).orElse(null); }
+    public Examination read(String id) { return this.repository.findById(id).orElse(null); }
 
     @Override
     public Examination update(Examination examination) {
