@@ -32,7 +32,7 @@ class SemesterServiceTest {
     static Date d2 = new Date(2021, 06, 10);
 
     private SemesterService service;
-    private static Semester semester = SemesterFactory.build("202178456", d1, d2);
+    private static Semester semester = SemesterFactory.build("202178456", "14/03/2021", "23/06/2021");
 
     @Test
     void a_create() {
@@ -51,7 +51,7 @@ class SemesterServiceTest {
     @Test
     void c_update() {
          Date d1 = new Date(2021, 06, 10);
-        Semester updated = new Semester.SemesterBuilder().copy(semester).setSemesterStart(d1).build();
+        Semester updated = new Semester.SemesterBuilder().copy(semester).setSemesterStart("21/02/2021").build();
         assertNotNull(service.update(updated));
         System.out.println("Updated: " + updated);
     }

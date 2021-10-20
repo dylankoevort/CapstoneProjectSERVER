@@ -27,7 +27,7 @@ class EnrollServiceTest {
     @Autowired
     static Date d1 = new Date(2021, 02, 10);
     private EnrollService service;
-    private static Enroll enroll = EnrollFactory.build("202178456", "ADP2021", d1, true);
+    private static Enroll enroll = EnrollFactory.build("202178456", "ADP2021", "20/12/2021", "Yes");
 
     @Test
     void a_create() {

@@ -21,7 +21,7 @@ class EnrollServiceTest {
     static Date d1 = new Date(2021,02,10);
 
     //I need to find a way to pass date is depracated
-    private static Enroll enroll = EnrollFactory.build("202178456","ADP2021",d1,true);
+    private static Enroll enroll = EnrollFactory.build("202178456","ADP2021","12/06/2021","Yes");
 
     @Test
     void a_create() {
