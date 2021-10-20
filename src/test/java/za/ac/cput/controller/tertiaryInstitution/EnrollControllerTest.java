@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class EnrollControllerTest {
     static Date d1 = new Date(2021,11,25);
-    private static Enroll enroll = EnrollFactory.build("20216767","ADP2021",d1,true);
+    private static Enroll enroll = EnrollFactory.build("20216767","ADP2021","12/02/21","Yes");
     @Autowired
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:8080/enroll";

@@ -1,7 +1,5 @@
 package za.ac.cput.entity.tertiaryInstitution;
 
-import java.util.Date;
-
 /**
  * Enroll.java
  * Entity for semester using builder pattern
@@ -20,8 +18,8 @@ public class Semester {
 
    @Id
    private String semesterID;
-   private Date semesterStart;
-   private Date semesterEnd;
+   private String semesterStart;
+   private String semesterEnd;
 
    public Semester(SemesterBuilder semester) {
       this.semesterID = semester.semesterID;
@@ -41,29 +39,29 @@ public class Semester {
 
       return semesterID;
    }
-   public Date getSemesterStart(){
+   public String getSemesterStart(){
       return semesterStart;
    }
-   public Date getSemesterEnd(){
+   public String getSemesterEnd(){
       return semesterEnd;
    }
 
    public static class SemesterBuilder{
       private String semesterID;
-      private Date semesterStart;
-      private Date semesterEnd;
+      private String semesterStart;
+      private String semesterEnd;
 
       public SemesterBuilder setSemesterID(String semesterID) {
          this.semesterID = semesterID;
          return this;
       }
 
-      public SemesterBuilder setSemesterStart(Date semesterStart) {
+      public SemesterBuilder setSemesterStart(String semesterStart) {
          this.semesterStart = semesterStart;
          return this;
       }
 
-      public SemesterBuilder setSemesterEnd(Date semesterEnd) {
+      public SemesterBuilder setSemesterEnd(String semesterEnd) {
          this.semesterEnd = semesterEnd;
          return this;
       }
