@@ -25,8 +25,8 @@ package za.ac.cput.service.curriculum;//package za.ac.cput.service.curriculum;
 //
 //    @Autowired
 //    private IExaminationService service;
-//    private static LocalDate examDate = LocalDate.of(2021, 7, 31);
-//    private static Examination examination = ExaminationFactory.build(123, "End year exam", examDate);
+
+//    private static Examination examination = ExaminationFactory.build(123, "End year exam", "2020/05/21");
 //
 //    @Test
 //    void a_create() {

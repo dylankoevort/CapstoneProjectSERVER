@@ -24,7 +24,7 @@ package za.ac.cput.service.curriculum;//package za.ac.cput.service.curriculum;
 //
 //    @Autowired
 //    private IScheduledClassService service;
-//    private static ScheduledClass scheduledClass = ScheduledClassFactory.build("AB123", 123, 123, "10:00");
+//    private static ScheduledClass scheduledClass = ScheduledClassFactory.build(123, 123, "10:00");
 //
 //    @Test
 //    void a_create() {
