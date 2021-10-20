@@ -23,19 +23,13 @@ import za.ac.Examination;
 import za.ac.ExaminationFactory;
 import za.ac.ExaminationRepository;
 
-//import java.util.Calendar;
-//import java.util.Date;
-
-import java.time.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class ExaminationRepositoryTest {
     private static ExaminationRepository repository = ExaminationRepository.getRepository();
-    //private static Date date = new Date(121, Calendar.NOVEMBER, 15);
-    private static LocalDate date = LocalDate.of(2021, 11, 15);
-    private static Examination examination = ExaminationFactory.build(10077, "Project Management", date);
+
+    private static Examination examination = ExaminationFactory.build(10077, "Project Management", "2020/06/10");
 
     @Test
     void a_create() {
