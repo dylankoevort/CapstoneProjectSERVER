@@ -1,12 +1,11 @@
-package za.ac.cput.entity.physical;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 /**
  * author: Llewelyn Klaase
  * student no: 216267072
  */
+package za.ac.cput.entity.physical;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Building {

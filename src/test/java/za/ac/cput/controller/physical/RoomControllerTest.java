@@ -1,3 +1,7 @@
+/**
+ * author: Llewelyn Klaase
+ * student no: 216267072
+ */
 package za.ac.cput.controller.physical;
 
 import org.junit.jupiter.api.MethodOrderer;
@@ -7,10 +11,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import za.ac.cput.entity.physical.Room;
 import za.ac.cput.factory.physical.RoomFactory;
 
@@ -33,10 +34,11 @@ class RoomControllerTest {
     @Test
     @Order(1)
     void create() {
-        String url = BASE_URL+ "/createl";
+        String url = BASE_URL+ "/create";
         ResponseEntity<Room> postResponse = restTemplate.postForEntity(url, room, Room.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
+        assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
         room = postResponse.getBody();
         System.out.println("Saved data: " + room);
         assertEquals(room.getRoomCode(), postResponse.getBody().getRoomCode());
@@ -45,7 +47,7 @@ class RoomControllerTest {
     @Test
     @Order(2)
     void read_Room() {
-        String url = BASE_URL + "/readlect" + room.getRoomCode();
+        String url = BASE_URL + "/read" + room.getRoomCode();
         System.out.println("URL for read: " + url);
         ResponseEntity<Room> response = restTemplate.getForEntity(url, Room.class);
         assertEquals(response.getBody().getRoomCode(), response.getBody().getRoomCode());
@@ -55,7 +57,7 @@ class RoomControllerTest {
     @Order(3)
     void update_Room() {
         Room updated = new Room.RoomBuilder().copy(room).setRoomCode("LH2").build();
-        String url = BASE_URL + "/updateroom";
+        String url = BASE_URL + "/update";
         System.out.println("URL for update: " + url);
         System.out.println("Post data: " + updated);
         ResponseEntity<Room> response = restTemplate.postForEntity(url, updated, Room.class);
@@ -65,7 +67,7 @@ class RoomControllerTest {
     @Test
     @Order(4)
     void delete_Room() {
-        String url = BASE_URL + "/deleteroom" + room.getRoomCode();
+        String url = BASE_URL + "/delete" + room.getRoomCode();
         System.out.println("URL: " + url);;
         restTemplate.delete(url);
     }
@@ -73,7 +75,7 @@ class RoomControllerTest {
     @Test
     @Order(5)
     void getAll_Room() {
-        String url = BASE_URL + "/getallroom";
+        String url = BASE_URL + "/getall";
         HttpHeaders head = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, head);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);

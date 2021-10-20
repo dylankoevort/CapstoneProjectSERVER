@@ -1,11 +1,11 @@
-package za.ac.cput.factory.physical;
-
-import za.ac.cput.entity.physical.Building;
-
 /**
  * author: Llewelyn Klaase
  * student no: 216267072
  */
+
+package za.ac.cput.factory.physical;
+
+import za.ac.cput.entity.physical.Building;
 
 public class BuildingFactory {
 
