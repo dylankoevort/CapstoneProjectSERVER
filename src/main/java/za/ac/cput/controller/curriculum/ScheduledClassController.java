@@ -24,7 +24,7 @@ public class ScheduledClassController {
 
     @PostMapping("/create")
     public ScheduledClass create(@RequestBody ScheduledClass scheduledClass) {
-        ScheduledClass newScheduledClass = ScheduledClassFactory.build(scheduledClass.getScheduledClassId(), scheduledClass.getSubjectCode(), scheduledClass.getRoomCode(), scheduledClass.getClassTime());
+        ScheduledClass newScheduledClass = ScheduledClassFactory.build(scheduledClass.getSubjectCode(), scheduledClass.getRoomCode(), scheduledClass.getClassTime());
         return scheduledClassService.create(newScheduledClass);
     }
 
