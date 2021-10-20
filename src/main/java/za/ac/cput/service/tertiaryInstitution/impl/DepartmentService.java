@@ -35,7 +35,9 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public Department update(Department department) {
-        return this.repository.save(department);
+        if(this.repository.existsById(department.getDepartmentId()))
+            return this.repository.save(department);
+        return null;
     }
 
     @Override
